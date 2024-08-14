@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WKWebView POST Example</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vconsole/dist/vconsole.min.js"></script>
+    <button onclick="sendData()">Send Data</button>
+    <div id="response"></div>
+
+    <script>
+
+        new window.VConsole();
+
+        function sendData() {
+            const dataToSend = { name: "socketCheck", data: "Hello from webpage!" };
+            window.postMessage(dataToSend, "*");
+        }
+
+       window.addEventListener("message", function(event) {
+          if (event.source !== window) return;
+          console.log("Webpage received message1: " + event.data.data);
+          responseDiv.innerHTML = 'Server Response: ' + event.data.data;
+      }, false);
+
+    </script>
+</body>
+</html>
