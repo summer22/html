@@ -20,7 +20,7 @@
         }
 
        window.addEventListener("message", function(event) {
-          if (event.source !== window) return;
+          if (event.source == window) return;
           console.log("Webpage received message1: " + event.data.data);
           const responseDiv = document.getElementById("response");
           responseDiv.innerHTML = 'Server Response: ' + event.data.data;
